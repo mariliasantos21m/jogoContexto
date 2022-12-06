@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 FILE * arquivoResultado;
 
@@ -57,12 +56,12 @@ int jogar(){
     printf("Inicialmente voce tera 10 pontos e perdera 2 ao digitar uma palavra que não esta entre as 20 da lista.\n");
     printf("Se digitar uma palavra que esteja dentro da lista, mas não for a primeira, voce perdera 1 ponto.\n\n");
     printf("[Dica: Objeto que tem dentro de uma casa.]\n");
-    printf("\nDigite uma palavra: ");
-    scanf("%s", palavraUsuario);
 
     while(contador <tentativas){
-        i=0;
+        printf("\nDigite uma palavra: ");
+        scanf("%s", palavraUsuario);
         guardarTentativaArquivo(palavraUsuario, contador+1);
+        i=0;
         while(palavraUsuario[i] != '\0'){
             palavraUsuario[i]= tolower(palavraUsuario[i]);
             i++;
@@ -74,7 +73,7 @@ int jogar(){
                 }
                 else{
                     printf("VOCÊ ACERTOU A PALAVRA ESCOLHIDA!\n");
-                    contador=4;
+                    contador=tentativas;
                 }
                 printf("Posição da palavra: %d\n", i+1);
                 verificaPalavraLista=0;
@@ -87,9 +86,6 @@ int jogar(){
             printf("A palavra não está dentro da lista.\n");
             pontuacao-=2;
         }
-        if (contador >= tentativas-1){break;}
-        printf("\nDigite uma palavra: ");
-        scanf("%s", palavraUsuario);
         contador++;
     }
 
