@@ -1,2 +1,2 @@
 # jogoContexto
-Jogo desenvolvido na linguagem c
+Jogo com lógica semelhante ao "Contexto me" desenvolvido na linguagem c.
